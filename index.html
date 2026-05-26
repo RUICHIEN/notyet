@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MediaPipe 臉部表情偵測示範</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="page-header">
+      <div>
+        <h1>MediaPipe 臉部表情偵測</h1>
+        <p class="subtitle">使用 FaceMesh 偵測臉部關鍵點，並直接推論常見表情，無需額外訓練。</p>
+      </div>
+    </header>
+
+    <div class="main-grid">
+      <section class="video-card">
+        <div class="video-frame">
+          <video class="input_video" autoplay muted playsinline></video>
+          <canvas class="output_canvas"></canvas>
+        </div>
+        <div class="status-panel">
+          <div class="status-header">
+            <span class="status-label">偵測結果</span>
+            <span class="status-badge">即時</span>
+          </div>
+          <div id="expression" class="expression-text">偵測中...</div>
+          <div class="score-grid">
+            <div class="score-item"><span>開心</span><strong id="happyScore">0%</strong></div>
+            <div class="score-item"><span>生氣</span><strong id="angryScore">0%</strong></div>
+            <div class="score-item"><span>哀傷</span><strong id="sadScore">0%</strong></div>
+            <div class="score-item"><span>微笑</span><strong id="smileScoreLabel">0%</strong></div>
+          </div>
+          <div id="details" class="status-detail"></div>
+          <button id="startCamera" class="primary-btn">啟動相機</button>
+        </div>
+      </section>
+
+      <aside class="control-panel">
+        <div class="panel-card">
+          <h2>表情推論</h2>
+          <p class="hint">使用 MediaPipe FaceMesh landmark 進行即時表情推斷，無須自行訓練模型。</p>
+          <div class="status-detail">目前頁面會偵測「微笑 / 張嘴 / 眨眼 / 中性」等表情。</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
